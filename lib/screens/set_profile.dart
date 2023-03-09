@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:bringin_texh/class/response.dart';
+
 import 'package:flutter/material.dart';
+
 
 import 'package:http/http.dart' as http;
 
@@ -24,50 +26,15 @@ class CreateProfile extends StatefulWidget {
   bool chk = false;
 class _CreateProfileState extends State<CreateProfile> {
   
-  // static login (String email, String password)async{
+  static login (String email, String password)async{
 
-  //   http.Response res = await http.post(Uri.parse('http://10.0.2.2:8080/api/signin'),
-  //       headers: <String, String>{
-  //         'Content-Type': 'application/json; charset=UTF-8',
-  //       },
-  //       body:jsonEncode(<String,String> {
-  //         'email':email,
-  //         'password':password,
-  //       }
-  //     )
-  //   );
-  //   resBody = jsonDecode(res.body);
-
-  //   Responses.message = resBody['message'].toString();
-
-  //   Responses.code = res.statusCode;
-
-  //   if(res.statusCode == 201){
-
-  //     debugPrint('login success');
-
-  //   }else if (res.statusCode == 401){
-     
-  //     debugPrint(resBody['message']);
-  //   }
-  
-  // }
-
-  static setter ()async{
-
-    // email = UserData.userInfo!['Email'];
-    // password = UserData.userInfo!['Password'];
-    
-    // if(email.isNotEmpty && password.isNotEmpty){
-    //   login(email,password);
-    // }
     http.Response res = await http.post(Uri.parse('http://10.0.2.2:8080/api/signin'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
         body:jsonEncode(<String,String> {
-          'email':UserData.userInfo!['Email'],
-          'password':UserData.userInfo!['Password'],
+          'email':email,
+          'password':password,
         }
       )
     );
@@ -77,15 +44,27 @@ class _CreateProfileState extends State<CreateProfile> {
 
     Responses.code = res.statusCode;
 
-    if(Responses.code == 201){
-      
+    if(res.statusCode == 201){
+
       debugPrint('login success');
 
     }else if (res.statusCode == 401){
      
       debugPrint(resBody['message']);
     }
+  
+  }
 
+  static setter ()async{
+
+    email = UserData.userInfo?['Email'];
+    password = UserData.userInfo?['Password'];
+    debugPrint(UserData.userInfo?['Email']);
+
+    if(email.isNotEmpty && password.isNotEmpty){
+      await login(email,password);
+    }
+  
   }
 
   @override

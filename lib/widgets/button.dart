@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 import 'package:bringin_texh/class/response.dart';
@@ -10,7 +11,8 @@ class MyButton extends StatelessWidget {
     });
   final String text;
   final Function fn;
-  
+
+  void login(){}
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -37,6 +39,11 @@ class MyButton extends StatelessWidget {
             ],
             ));
           });
+        }else if(Responses.code == 201){
+          Future.delayed(const Duration(milliseconds:1500 ),(){
+            Navigator.pushNamed(context, '/dummy_screen');
+          });
+          
         }
         
       }, 
