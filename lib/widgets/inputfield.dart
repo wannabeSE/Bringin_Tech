@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:bringin_texh/data/user_data.dart';
+import 'package:bringin_texh/class/user_data.dart';
+
 class InputField extends StatefulWidget {
   const InputField({
     required this.promptText,
     required this.labelText,
-    // required this.keyCnt,
-    required this.func,
     super.key
     });
     
   final String labelText;
   final String promptText;
-  // final int keyCnt;
-  final Function func;
+
   @override
   State<InputField> createState() => _InputFieldState();
 }
   
 class _InputFieldState extends State<InputField> {
-
-  TextEditingController val = TextEditingController();
+  
+  
   bool ok = false;
-  // var a;
+  Icon ic = const Icon(Icons.check_box_outline_blank);
+  
   @override
   Widget build(BuildContext context) {
    return Padding (
@@ -30,23 +29,24 @@ class _InputFieldState extends State<InputField> {
         elevation: 10,
         child: TextFormField( 
           onChanged: (value) {
-            if(value.isNotEmpty){
+            if( value.isNotEmpty && UserData.userInfo!.containsKey(widget.labelText) ){
               ok = true;
                 setState(() {
-                  const Icon(Icons.check,color: Colors.greenAccent,);
+                  ic = const Icon(Icons.check,color: Colors.greenAccent,);
               });
-              UserData.email = val.text;
-             
+
+              UserData.userInfo![widget.labelText] = value;
+
             }
+
             else{
               ok = false;
                 setState(() {
-                  const Icon(Icons.check_box_outline_blank);
+                  ic = const Icon(Icons.check_box_outline_blank);
                 });
             }
           },
-          controller: val,
-          validator:(value){
+          validator: (value) {
             if(value!.isEmpty){
               return widget.promptText;
             }else {
@@ -58,14 +58,9 @@ class _InputFieldState extends State<InputField> {
               borderRadius: BorderRadius.circular(5),
               borderSide:const BorderSide(color: Colors.black87)
             ),
-            // suffixIcon:ok ? const Padding(
-            //   padding: EdgeInsets.fromLTRB(10, 15, 0, 0),
-            //   child: Icon(Icons.check,color: Colors.greenAccent,),
-            // ):const Icon(Icons.check_box_outline_blank),
-            suffixIcon: ok?const Icon(Icons.check,color: Colors.greenAccent)
-            :const Icon(Icons.check_box_outline_blank,),
-            labelText:widget.labelText ,
-            floatingLabelStyle:const TextStyle(color: Colors.black)
+            suffixIcon: ok ? ic : ic,
+            labelText: widget.labelText ,
+            floatingLabelStyle: const TextStyle(color: Colors.black)
           ),
         ),
       ),
