@@ -93,7 +93,7 @@ class _CreateProfileState extends State<CreateProfile> {
                 ),
                 const SizedBox(height: 20,),
                 CircleAvatar(
-                  backgroundImage:const AssetImage('assets/pic.jpg'),
+                  backgroundImage: const AssetImage('assets/new.jpg'),
                   maxRadius: 30,
                   child : Stack(      
                     children: [
