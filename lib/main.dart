@@ -12,7 +12,7 @@ void main() {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner:  false,
-      initialRoute: Routes.setProfile,
+      initialRoute: Routes.customerProductView,
       getPages: getPages,
       
     );
