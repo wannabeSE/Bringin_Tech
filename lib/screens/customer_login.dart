@@ -55,16 +55,17 @@ class  _UserSignInState extends State<UserSignIn> {
        Get.to(const DummyScreen());
       debugPrint('login success');
 
-    }else if (resKeeper!.statusCode == 401){
-    
-     Get.defaultDialog(
-            title: 'Login Error',
-            middleText: resBody['data']['message'].toString(),
-            titlePadding: const EdgeInsets.all(10),
-            middleTextStyle: const TextStyle(fontWeight: FontWeight.bold),
-            confirm: const DialogMaterials()
-          );
-      debugPrint(resBody['message']);
+    }else if (resKeeper!.statusCode == 401) {
+      
+      Get.defaultDialog(
+              title: 'Login Error',
+              middleText: resBody['data']['message'].toString(),
+              titlePadding: const EdgeInsets.all(10),
+              middleTextStyle: const TextStyle(fontWeight: FontWeight.bold),
+              confirm: const DialogMaterials()
+            );
+
+        
     }
   
   }

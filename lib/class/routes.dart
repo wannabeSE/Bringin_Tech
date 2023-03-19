@@ -1,4 +1,5 @@
 import 'package:bringin_texh/screens/products_view.dart';
+import 'package:bringin_texh/screens/set_profile.dart';
 import 'package:bringin_texh/screens/welcome.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
@@ -10,8 +11,13 @@ class Routes{
   static String signIn = '/customer_login';
   static String dummyScreen = '/dummy_screen';
   static String customerProductView = '/products_view';
+  static String setProfile = '/set_profile';
 }
 final List<GetPage> getPages = [
+  GetPage(
+    name: Routes.setProfile, 
+    page: ()=>const SetProfile()
+  ),
   GetPage(
     name: Routes.welcomeScreen, 
     page: ()=> const Welcome()
