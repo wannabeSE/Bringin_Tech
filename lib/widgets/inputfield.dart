@@ -35,11 +35,11 @@ class _InputFieldState extends State<InputField> {
                 setState(() {
                   ic = const Icon(Icons.check,color: Colors.greenAccent,);
               });
-
+        
               UserData.userInfo[widget.labelText] = value;
-
+        
             }
-
+        
             else{
               ok = false;
                 setState(() {
@@ -55,10 +55,13 @@ class _InputFieldState extends State<InputField> {
               }
           },
           decoration: InputDecoration(
+            contentPadding: const EdgeInsets.all(23),
             border: OutlineInputBorder(
+              gapPadding: 10,
               borderRadius: BorderRadius.circular(5),
               borderSide:const BorderSide(color: Colors.black87)
             ),
+            
             prefixIcon: widget.prefixIcon,
             suffixIcon: ok ? ic : ic,
             labelText: widget.labelText ,
