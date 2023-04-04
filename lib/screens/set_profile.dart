@@ -1,4 +1,5 @@
 import 'package:bringin_texh/class/user_data.dart';
+import 'package:bringin_texh/widgets/curverd_navigation_bar.dart';
 import 'package:bringin_texh/widgets/dropdown_dialog.dart';
 import 'package:bringin_texh/widgets/inputfield.dart';
 import 'package:flutter/material.dart';
@@ -55,18 +56,7 @@ class SetProfile extends StatelessWidget {
                   const InputField(promptText: '', labelText: 'Phone', prefixIcon: Icon(Icons.phone)),
                   const InputField(promptText: '', labelText: 'Email', prefixIcon: Icon(Icons.mail_outline)),
                   const SizedBox(height: 60,),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10)
-                    ),
-                    child: BottomNavigationBar(
-                      elevation: 15,
-                      items: const [
-                        BottomNavigationBarItem(icon: Icon(Icons.pageview),label: 'Jobs'),
-                        BottomNavigationBarItem(icon: Icon(Icons.message),label: 'Message'),
-                        BottomNavigationBarItem(icon: Icon(Icons.person),label: 'Me'),
-                    ]),
-                  )
+                  const CurvedNavBar()
             ],
           )
           

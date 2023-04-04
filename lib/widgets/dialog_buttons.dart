@@ -32,7 +32,7 @@ class DialogButton extends StatelessWidget {
           child:Text(
             labelText,
             style: const TextStyle(
-              fontSize: 16,
+              fontSize: 14,
               fontWeight: FontWeight.bold
               ,color: Colors.black
               ),
